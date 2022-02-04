@@ -3,6 +3,7 @@ import 'package:hostels/components/bottombar_item.dart';
 import 'package:hostels/components/palette.dart';
 import 'package:hostels/manager/home.dart';
 import 'package:hostels/manager/profile/user_profile.dart';
+import 'package:hostels/manager/uploads.dart';
 
 class Index extends StatefulWidget {
   const Index({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _IndexState extends State<Index> {
     Icons.person_rounded
   ];
   List<Widget> pages = [
-    Container(), // const Uploads(),
+    const Uploads(),
     Home(),
     UserInfoScreen(),
   ];

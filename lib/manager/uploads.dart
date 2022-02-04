@@ -39,8 +39,9 @@ class _UploadsState extends State<Uploads> {
                     Content? currentContent = box.getAt(index);
                     return Container(
                       child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.amberAccent[100],
+                        leading: const CircleAvatar(
+                          backgroundImage: AssetImage("assets/hostel.png"),
+                          radius: 90,
                         ),
                         title: Text(currentContent!.name),
                         subtitle: Text(currentContent.location),

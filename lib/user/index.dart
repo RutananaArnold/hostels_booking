@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hostels/components/bottombar_item.dart';
 import 'package:hostels/components/palette.dart';
+import 'package:hostels/user/home.dart';
 import 'package:hostels/user/profile/user_profile.dart';
 
 class Index extends StatefulWidget {
@@ -14,7 +15,7 @@ class _IndexState extends State<Index> {
   int activeTab = 0;
   List<IconData> tapIcons = [Icons.home_filled, Icons.person_rounded];
   List<Widget> pages = [
-    Container(), // Home(),
+    Home(),
     UserInfoScreen(),
   ];
 

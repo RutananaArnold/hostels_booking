@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hostels/components/palette.dart';
 import 'package:hostels/models/content.dart';
+import 'package:hostels/user/booking.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -39,8 +40,9 @@ class _HomeState extends State<Home> {
                     Content? currentContent = box.getAt(index);
                     return Container(
                       child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.amberAccent[100],
+                        leading: const CircleAvatar(
+                          radius: 70,
+                          backgroundImage: AssetImage("assets/hostel.png"),
                         ),
                         title: Text(currentContent!.name),
                         subtitle: Text(currentContent.location),
@@ -60,6 +62,13 @@ class _HomeState extends State<Home> {
                                     TextButton(
                                         onPressed: () {
                                           Navigator.of(context).pop();
+                                          Navigator.of(context)
+                                              .pushAndRemoveUntil(
+                                                  MaterialPageRoute(
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          const Booking()),
+                                                  (route) => false);
                                         },
                                         child: const Text("Yes"))
                                   ],
