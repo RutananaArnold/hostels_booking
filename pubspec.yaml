@@ -42,6 +42,10 @@ dependencies:
   firebase_auth: ^3.3.6
   shared_preferences: ^2.0.12
   url_launcher: ^6.0.18
+  hive_flutter: ^1.1.0
+  hive: 
+  hive_generator: 
+  build_runner: ^1.7.2
  
 
 dev_dependencies:

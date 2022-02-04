@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:hostels/components/RoundedInputField.dart';
 import 'package:hostels/components/palette.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:hostels/manager/uploads.dart';
+import 'package:hostels/models/content.dart';
 
 class PageUpload extends StatefulWidget {
   const PageUpload({Key? key}) : super(key: key);
@@ -12,13 +14,7 @@ class PageUpload extends StatefulWidget {
 }
 
 class _PageUploadState extends State<PageUpload> {
-  // late final Box box;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   //get reference to an already opened box
-  //   box = Hive.box('hostelsBox');
-  // }
+  late final Box box;
 
   final nameController = TextEditingController();
   final locationController = TextEditingController();
@@ -70,13 +66,14 @@ class _PageUploadState extends State<PageUpload> {
 
   //upload logic
 
-  // void _addInfo() async {
-  //   //storing key-value pairs
-  //   Box hostelBox = Hive.box('hostelsBox');
-  //   hostelBox.add(Content(nameController.text, locationController.text));
+  void _addInfo() async {
+    //storing key-value pairs
+    Box<Content> hostelBox = Hive.box<Content>('hostelsBox');
+    hostelBox.add(Content(nameController.text, locationController.text));
+    Navigator.of(context).pop();
 
-  //   print("Info added");
-  // }
+    print("Info added");
+  }
 
   upload() {
     if (_isLoading) {
@@ -87,7 +84,7 @@ class _PageUploadState extends State<PageUpload> {
       );
     } else {
       return ElevatedButton(
-        child: const Text("SIGNUP"),
+        child: const Text("Add hostels"),
         onPressed: () {
           if (nameController.text == ' ' || locationController.text == ' ') {
             Flushbar(
@@ -101,9 +98,10 @@ class _PageUploadState extends State<PageUpload> {
             setState(() {
               _isLoading = true;
             });
+            _addInfo();
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
-                  builder: (BuildContext context) => Uploads(),
+                  builder: (BuildContext context) => const Uploads(),
                 ),
                 (Route<dynamic> route) => true);
           }

@@ -24,7 +24,7 @@ class _UserProfileBodyState extends State<UserProfileBody> {
     getInfor();
   }
 
-  Future<String> getInfor() async {
+  Future<String?> getInfor() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
     personEmail = sharedPreferences.getString("email")!;
@@ -32,7 +32,7 @@ class _UserProfileBodyState extends State<UserProfileBody> {
       personEmail = (sharedPreferences.getString("email") ?? 'No email found');
     });
 
-    throw '';
+    return null;
   }
 
   @override

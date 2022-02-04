@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:hostels/models/content.dart';
 import 'package:hostels/welcome_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -8,6 +10,15 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+//hivedb details
+  //registering the adapter
+  Hive.registerAdapter<Content>(ContentAdapter());
+  //initialize hive
+  await Hive.initFlutter();
+  //open the hostelBox
+  await Hive.openBox<Content>('hostelsBox');
+
   runApp(const MyApp());
 }
 
