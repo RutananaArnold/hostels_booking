@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:hostels/components/RoundedInputField.dart';
+import 'package:flutterwave/flutterwave.dart';
+import 'package:hostels/user/payents.dart';
 
 class Booking extends StatefulWidget {
   const Booking({Key? key}) : super(key: key);
@@ -117,6 +119,7 @@ class _BookingState extends State<Booking> {
                       bookDetails.add(data);
                     });
                     pending();
+                    Navigator.of(context).pop();
                   },
                   child: Text("Book"))
             ],
@@ -170,6 +173,14 @@ class _BookingState extends State<Booking> {
                           backgroundColor:
                               status == true ? Colors.green : Colors.red,
                         ),
+                        onLongPress: () {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const Payments(),
+                              ),
+                              (Route<dynamic> route) => true);
+                        },
                       )),
             ),
       floatingActionButton: FloatingActionButton(

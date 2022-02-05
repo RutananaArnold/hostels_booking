@@ -41,7 +41,7 @@ class _UploadsState extends State<Uploads> {
                       child: ListTile(
                         leading: const CircleAvatar(
                           backgroundImage: AssetImage("assets/hostel.png"),
-                          radius: 90,
+                          radius: 50,
                         ),
                         title: Text(currentContent!.name),
                         subtitle: Text(currentContent.location),

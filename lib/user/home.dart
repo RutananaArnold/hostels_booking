@@ -41,11 +41,12 @@ class _HomeState extends State<Home> {
                     return Container(
                       child: ListTile(
                         leading: const CircleAvatar(
-                          radius: 70,
+                          radius: 50,
                           backgroundImage: AssetImage("assets/hostel.png"),
                         ),
-                        title: Text(currentContent!.name),
-                        subtitle: Text(currentContent.location),
+                        title: Text("Hostel name: " + currentContent!.name),
+                        subtitle:
+                            Text("Hostel location: " + currentContent.location),
                         onLongPress: () {
                           showDialog(
                               context: context,
@@ -68,7 +69,7 @@ class _HomeState extends State<Home> {
                                                       builder: (BuildContext
                                                               context) =>
                                                           const Booking()),
-                                                  (route) => false);
+                                                  (route) => true);
                                         },
                                         child: const Text("Yes"))
                                   ],
