@@ -9,5 +9,12 @@ class Content {
   String name;
   @HiveField(1)
   String location;
-  Content(this.name, this.location);
+
+  @HiveField(2)
+  // ignore: prefer_typing_uninitialized_variables
+  var image;
+  Content(this.name, this.location, this.image, 
+  // this.locPicker,
+  //     this.description, this.price
+      );
 }
